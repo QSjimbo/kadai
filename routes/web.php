@@ -11,6 +11,10 @@
 |
 */
 
+use App\Http\Controllers\DrinkController;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get("drinks","DrinksController@index");
