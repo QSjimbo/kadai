@@ -3,9 +3,20 @@ namespace App\Http\Controllers;
 
 class DrinksController extends Controller
 {
-   public function index(){
-       $drinks = $this->getDrinks();
-       return view("drinks.index", ["drinks" => $drinks]);
+//    public function index(){
+//        $drinks = $this->getDrinks();
+//        return view("drinks.index", ["drinks" => $drinks]);
+//    }
+    // 課題１
+   public function index(Request $request){
+    if ($request->hasCookie("accessCount")){// hasCookie("OOO")は組み込み「""内の内容のCookieを持ってるかどうか」
+        $count = $request->cookie("accessCount");
+    }else{
+        $count = 0;
+    }
+    var_dump($count);
+    $drinks = $this->getDrinks();
+    return view("drinks.index", ["drinks" => $drinks]);
    }
 
 
