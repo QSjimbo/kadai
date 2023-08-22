@@ -18,4 +18,11 @@ class RequestFormController extends Controller
         echo $request -> get("message");
     }
 
+
+    public function showAllrequest(Request $request){
+        $allRequestData = $request -> all();
+        foreach ($allRequestData as $data) {
+            echo $data;
+        }
+    }
 }
