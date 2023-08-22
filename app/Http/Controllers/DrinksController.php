@@ -8,16 +8,23 @@ class DrinksController extends Controller
 //        return view("drinks.index", ["drinks" => $drinks]);
 //    }
     // 課題１
-   public function index(Request $request){
-    if ($request->hasCookie("accessCount")){// hasCookie("OOO")は組み込み「""内の内容のCookieを持ってるかどうか」
+    public function index(Request $request){
+    if ($request->hasCookie("accessCount")) {
         $count = $request->cookie("accessCount");
-    }else{
+    } else {
         $count = 0;
     }
+
+    $count ++;
+
     var_dump($count);
+    // getDrinksを呼び出し、変数に代入する
     $drinks = $this->getDrinks();
-    return view("drinks.index", ["drinks" => $drinks]);
-   }
+    // returnの記述を以下のように修正する
+    return response()
+        ->view("drinks.index", ["drinks" => $drinks])
+        ->cookie("accessCount", $count);
+}
 
 
    public function getDrinks(){
