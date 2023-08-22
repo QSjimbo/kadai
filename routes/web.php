@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get("drinks","DrinksController@index");
+Route::get("requestForm", "RequestFormController@form");
+Route::post("showRequest", "RequestFormController@postRequest");
