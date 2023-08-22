@@ -13,4 +13,9 @@ class RequestFormController extends Controller
         // echo $request -> post("message"). "<br>";
         echo $request -> get("message");
     }
+
+    public function getRequest(Request $request){
+        echo $request -> get("message");
+    }
+
 }

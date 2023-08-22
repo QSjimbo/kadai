@@ -5,7 +5,8 @@
     <title>RequestForm</title>
 </head>
 <body>
-    <form action="{{ url('showRequest') }}" method="POST">
+    <!-- 設問２POSTで取得 -->
+    <!-- <form action="{{ url('showRequest') }}" method="POST">
         @csrf
         <div>
             <label for="message">入力フォーム</label>
@@ -14,6 +15,17 @@
         <div>
             <input type="submit" value="リクエストを送る">
         </div>
-    </form>
+    </form> -->
+
+    <!-- 設問３GETで取得 -->
+    <form action="{{ url('showRequest') }}" method="GET">
+    <div>
+        <label for="message">入力フォーム</label>
+        <input type="text" name="message" id="message">
+    </div>
+    <div>
+        <input type="submit" value="リクエストを送る">
+    </div>
+</form>
 </body>
 </html>
