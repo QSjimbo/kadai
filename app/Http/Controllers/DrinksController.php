@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 class DrinksController extends Controller
 {
    public function index(){
-    $drinks = $this->getDrinks();
-    echo "<pre>";
-    var_dump($drinks);
-    echo "<pre>";
+       $drinks = $this->getDrinks();
+       return view("drinks.index", ["drinks" => $drinks]);
    }
 
 
@@ -17,7 +15,7 @@ class DrinksController extends Controller
             "name" => "water",
             "price" => 100,
             "stock" => 50,
-            "maker" => array("name" => "A社")
+            "maker" => array("name" => "株式会社 A社")
         ],
         [
             "name"  => "tea",
