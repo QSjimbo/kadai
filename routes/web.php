@@ -18,3 +18,14 @@ Route::get('/', function () {
 });
 
 Route::get("drinks","DrinksController@index");
+Route::get("requestForm", "RequestFormController@form");
+
+// POST通信
+Route::post("showRequest", "RequestFormController@postRequest");
+
+// GET通信
+Route::get("showRequest", "RequestFormContropler@getRequest");
+
+// 設問４
+Route::get("showAllRequest", "RequestFormController@showAllRequest");
+
