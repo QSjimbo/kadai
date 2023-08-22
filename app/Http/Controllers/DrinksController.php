@@ -1,14 +1,12 @@
 <?php
 namespace App\Http\Controllers;
+use illuminate\Http\Request;
 
 class DrinksController extends Controller
 {
-//    public function index(){
-//        $drinks = $this->getDrinks();
-//        return view("drinks.index", ["drinks" => $drinks]);
-//    }
-    // 課題１
-    public function index(Request $request){
+    public function index(Request $request)
+{
+
     if ($request->hasCookie("accessCount")) {
         $count = $request->cookie("accessCount");
     } else {
@@ -17,8 +15,9 @@ class DrinksController extends Controller
 
     $count ++;
 
-    var_dump($count);
     $drinks = $this->getDrinks();
+
+    // returnの記述を以下のように修正する
     return response()
         ->view("drinks.index", [
             "drinks" => $drinks,
@@ -26,7 +25,6 @@ class DrinksController extends Controller
         ])
         ->cookie("accessCount", $count);
 }
-
 
    public function getDrinks(){
     $drinks = [
