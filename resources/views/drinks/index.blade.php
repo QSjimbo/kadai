@@ -5,6 +5,9 @@
     <meta charset="utf8" />
 </head>
 <body>
+    <div>
+        <?php echo $cookie["accessCount"]. "回目の訪問です"?>
+    </div>
     <h1>飲み物一覧</h1>
     <table>
         <thead>

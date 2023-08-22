@@ -18,11 +18,12 @@ class DrinksController extends Controller
     $count ++;
 
     var_dump($count);
-    // getDrinksを呼び出し、変数に代入する
     $drinks = $this->getDrinks();
-    // returnの記述を以下のように修正する
     return response()
-        ->view("drinks.index", ["drinks" => $drinks])
+        ->view("drinks.index", [
+            "drinks" => $drinks,
+            "accessCount" => $count
+        ])
         ->cookie("accessCount", $count);
 }
 
