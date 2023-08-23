@@ -84,6 +84,19 @@ class DrinksController extends Controller
     }
 
 
+    public function store(Request $request)
+{
+    $drink = new Drink();
+    $data = $request->all();
+
+    $drink->name = $data["name"];
+    $drink->price = $data["price"];
+    $drink->stock = $data["stock"];
+    $drink->maker_id = $data["maker_id"];
+
+    $drink->save();
+}
+
 
 
 
