@@ -23,10 +23,10 @@
         <tbody>
             <?php foreach($drinks as $drink): ?>
                 <tr>
-                    <td><?php echo $drink->name; ?></td>
-                    <td><?php echo $drink->price; ?></td>
-                    <td><?php echo $drink->stock; ?></td>
-                    <td><?php echo $drink->maker_id; ?></td>
+                    <td><?php echo $drink["name"]; ?></td>
+                    <td><?php echo $drink["price"]; ?></td>
+                    <td><?php echo $drink["stock"]; ?></td>
+                    <td><?php echo $drink["maker"]["name"]; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

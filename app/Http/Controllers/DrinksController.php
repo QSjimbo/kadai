@@ -6,27 +6,32 @@ use App\Drink;
 
 class DrinksController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
+        $drinks = Drink::all();
 
-        if ($request->hasCookie("accessCount")) {
-            $count = $request->cookie("accessCount");
-        } else {
-            $count = 0;
-        }
-
-        $count ++;
-
-        $drinks = $this->getDrinks();
-
-        // returnの記述を以下のように修正する
-        return response()
-            ->view("drinks.index", [
-                "drinks" => $drinks,
-                "accessCount" => $count
-            ])
-            ->cookie("accessCount", $count);
+        return view("drinks.index", [
+            "drinks" => $drinks
+        ]);
     }
+    // Model課題のためcookie部分はコメントアウト
+    // public function index(Request $request)
+    // {
+    //     if ($request->hasCookie("accessCount")) {
+    //         $count = $request->cookie("accessCount");
+    //     } else {
+    //         $count = 0;
+    //     }
+    //     $count ++;
+    //     $drinks = $this->getDrinks();
+    //     return response()
+    //         ->view("drinks.index", [
+    //             "drinks" => $drinks,
+    //             "accessCount" => $count
+    //         ])
+    //         ->cookie("accessCount", $count);
+    // }
+
     public function cookieDelete(){
         $forget = \Cookie::forget("accessCount");
         return response()
