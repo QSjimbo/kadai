@@ -21,7 +21,7 @@
                     <td><?php echo $drink->name; ?></td>
                     <td><?php echo $drink->price; ?></td>
                     <td><?php echo $drink->stock; ?></td>
-                    <td><?php echo $drink->maker_id; ?></td>
+                    <td><?php echo $drink->maker->name; ?></td>
                     <td><a href="drinks/edit/{{$drink->id}}">編集</a></td>
                     <td><form action="<?php echo url('drinks/delete/'. $drink->id); ?>" method="POST">
                         @csrf
