@@ -69,6 +69,10 @@ class DrinksController extends Controller
         echo "</pre>";
 
     }
+    public function deleteSession(Request $request){
+        $request -> session()->forget("コーラ");
+        echo "削除しました。";
+    }
 }
 
 

@@ -42,4 +42,5 @@ Route::get("session/save", "DrinksController@saveSession");
 // 課題２
 Route::get("session/show", "DrinksController@showSession");
 
-
+// 課題３
+Route::get("session/delete", "DrinksController@deleteSession");
