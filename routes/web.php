@@ -57,6 +57,7 @@ Route::post("session/setSession", "SessionController@setSession");
 Route::get("drinks/create", "DrinksController@create");
 // 課題２
 Route::post("drinks/store", "DrinksController@store");
+// Route::get("drinks/store", "DrinksController@store");
 
 
 

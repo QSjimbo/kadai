@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use illuminate\Http\Request;
 use App\Maker;
+use App\Drink;
 
 class DrinksController extends Controller
 {
@@ -75,12 +76,14 @@ class DrinksController extends Controller
         echo "削除しました。";
     }
 
-    public function create(){
+    public function create()
+    {
+        // モデルから全件取得
         $makers = Maker::all();
-        // foreach ($makers as $maker) {
-        //     echo $maker->name;
-        // }
-        return view("drinks.create", ["makers" => $makers]);
+
+        return view("drinks.create", [
+            "makers" => $makers
+        ]);
     }
 
     public function store(Request $request)

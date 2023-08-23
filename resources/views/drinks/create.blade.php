@@ -12,13 +12,15 @@
         <input type="number" name="stock" value="" placeholder="在庫数を入力してください" required>
     </div>
     <div>
-        <label>メーカー</label>
-        <select name="maker_id">
-            <?php foreach ($makers as $maker):?>
-                <option value="{{$maker->id}}"><?php echo $maker->name; ?></option>
-            <?php endforeach ?>
-        </select>
-    </div>
+    <label>メーカー</label>
+    <select name="maker_id">
+        <!-- メーカーモデルを利用する -->
+        <!-- valueにはメーカーID、表示はメーカー名となるように -->
+        <?php foreach ($makers as $maker): ?>
+            <option value="{{$maker->id}}"><?php echo $maker->name; ?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
     <div>
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         <input class="btn" type="submit" value="登録する">
