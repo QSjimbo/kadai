@@ -1,30 +1,61 @@
 <?php
 namespace App\Http\Controllers;
 use illuminate\Http\Request;
+use App\Maker;
+use App\Drink;
 
 class DrinksController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-
-        if ($request->hasCookie("accessCount")) {
-            $count = $request->cookie("accessCount");
-        } else {
-            $count = 0;
-        }
-
-        $count ++;
-
-        $drinks = $this->getDrinks();
-
-        // returnの記述を以下のように修正する
-        return response()
-            ->view("drinks.index", [
-                "drinks" => $drinks,
-                "accessCount" => $count
-            ])
-            ->cookie("accessCount", $count);
+        $drinks = Drink::all();
+        return view("drinks.index", [
+            "drinks" => $drinks
+        ]);
     }
+    public function edit($id)
+    {
+        $drink = Drink::find($id);
+        $makers = Maker::all();
+
+        return view("drinks.edit", [
+            "drink" => $drink,
+            "makers" => $makers
+        ]);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $drink = Drink::find($id);
+        $drink->fill($request->all())->save();
+        return redirect("drinks");
+    }
+
+    public function delete($id){
+        $drink = Drink::find($id);
+        $drink->delete();
+        return redirect("drinks");
+
+    }
+    // Model課題のためcookie部分はコメントアウト
+    // public function index(Request $request)
+    // {
+    //     if ($request->hasCookie("accessCount")) {
+    //         $count = $request->cookie("accessCount");
+    //     } else {
+    //         $count = 0;
+    //     }
+    //     $count ++;
+    //     $drinks = $this->getDrinks();
+    //     return response()
+    //         ->view("drinks.index", [
+    //             "drinks" => $drinks,
+    //             "accessCount" => $count
+    //         ])
+    //         ->cookie("accessCount", $count);
+    // }
+
     public function cookieDelete(){
         $forget = \Cookie::forget("accessCount");
         return response()
@@ -73,6 +104,28 @@ class DrinksController extends Controller
         $request -> session()->forget("コーラ");
         echo "削除しました。";
     }
+
+    public function create()
+    {
+        // モデルから全件取得
+        $makers = Maker::all();
+
+        return view("drinks.create", [
+            "makers" => $makers
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $drink = new Drink();
+        $data = $request->all();
+
+        $drink->name = $data["name"];
+        $drink->price = $data["price"];
+        $drink->stock = $data["stock"];
+        $drink->maker_id = $data["maker_id"];
+
+        $drink->save();
+    }
+
 }
-
-

@@ -6,7 +6,12 @@
 </head>
 <body>
     <div>
+        <?php echo $accessCount. "回目の訪問です"?>
     </div>
+    <form action="delete" method="POST">
+        @csrf
+        <input type="submit" name="send" value="cookieを削除">
+    </form>
     <h1>飲み物一覧</h1>
     <table>
         <thead>
@@ -18,14 +23,10 @@
         <tbody>
             <?php foreach($drinks as $drink): ?>
                 <tr>
-                    <td><?php echo $drink->name; ?></td>
-                    <td><?php echo $drink->price; ?></td>
-                    <td><?php echo $drink->stock; ?></td>
-                    <td><?php echo $drink->maker_id; ?></td>
-                    <td><a href="drinks/edit/{{$drink->id}}">編集</a></td>
-                    <td><form action="drinks/delete/{{$drink->id}}" method="POST">
-                        <div><input type="submit" value="削除"></div>
-                    </form></td>
+                    <td><?php echo $drink["name"]; ?></td>
+                    <td><?php echo $drink["price"]; ?></td>
+                    <td><?php echo $drink["stock"]; ?></td>
+                    <td><?php echo $drink["maker"]["name"]; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

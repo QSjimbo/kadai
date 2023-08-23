@@ -16,6 +16,8 @@
 // use Illuminate\Routing\Route;　←こいつがあると「"Method Illuminate\Routing\Route::get does not exist."」というエラーが起こる
 // use Illuminate\Support\Facades\Route; ←に書き換えること↑が解決する。
 
+use App\Http\Controllers\DrinksController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -49,3 +51,21 @@ Route::get("session/delete", "DrinksController@deleteSession");
 Route::get("session/inputMessage", "SessionController@inputMessage");
 Route::post("session/setSession", "SessionController@setSession");
 
+
+// Model
+// 課題１
+Route::get("drinks/create", "DrinksController@create");
+// 課題２
+Route::post("drinks/store", "DrinksController@store");
+// 課題３
+// ここのルーティングは上部で記述済み
+
+
+// 課題４
+Route::get("drinks/edit/{id}", "DrinksController@edit");
+
+// 課題５
+Route::post("drinks/update/{id}", "DrinksController@update");
+
+// 課題６
+Route::post("drinks/delete/{id}", "DrinksController@delete");

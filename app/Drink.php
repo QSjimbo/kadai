@@ -1,8 +1,14 @@
 <?php
 namespace App;
-use Illuminate\Database\Eloquent\Model;
+use illuminate\Database\Eloquent\Model;
 
 class Drink extends Model
 {
-    $timestamps = false;
+    public $timestamps = false;
+    protected $fillable = [
+        "name",
+        "price",
+        "stock",
+        "maker_id"
+    ];
 }
