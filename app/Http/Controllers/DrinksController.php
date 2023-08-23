@@ -9,10 +9,34 @@ class DrinksController extends Controller
     public function index()
     {
         $drinks = Drink::all();
-
         return view("drinks.index", [
             "drinks" => $drinks
         ]);
+    }
+    public function edit($id)
+    {
+        $drink = Drink::find($id);
+        $makers = Maker::all();
+
+        return view("drinks.edit", [
+            "drink" => $drink,
+            "makers" => $makers
+        ]);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $drink = Drink::find($id);
+        $drink->fill($request->all())->save();
+        return redirect("drinks");
+    }
+
+    public function delete($id){
+        $drink = Drink::find($id);
+        $drink->delete();
+        return redirect("drinks");
+
     }
     // Model課題のためcookie部分はコメントアウト
     // public function index(Request $request)
@@ -104,11 +128,4 @@ class DrinksController extends Controller
         $drink->save();
     }
 
-
-
-
-
-
 }
-
-

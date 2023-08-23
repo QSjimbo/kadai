@@ -62,13 +62,10 @@ Route::post("drinks/store", "DrinksController@store");
 
 
 // 課題４
-
-
-
+Route::get("drinks/edit/{id}", "DrinksController@edit");
 
 // 課題５
-
-
-
+Route::post("drinks/update/{id}", "DrinksController@update");
 
 // 課題６
+Route::post("drinks/delete/{id}", "DrinksController@delete");
