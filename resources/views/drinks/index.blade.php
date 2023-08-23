@@ -23,7 +23,8 @@
                     <td><?php echo $drink->stock; ?></td>
                     <td><?php echo $drink->maker_id; ?></td>
                     <td><a href="drinks/edit/{{$drink->id}}">編集</a></td>
-                    <td><form action="drinks/delete/{{$drink->id}}" method="POST">
+                    <td><form action="<?php echo url('drinks/delete/'. $drink->id); ?>" method="POST">
+                        @csrf
                         <div><input type="submit" value="削除"></div>
                     </form></td>
                 </tr>
