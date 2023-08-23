@@ -62,6 +62,13 @@ class DrinksController extends Controller
     ];
     $request->session()->put("コーラ", $data);
     }
+
+    public function showSession(Request $request){
+        echo "<pre>";
+        var_dump($request->session()->all());
+        echo "</pre>";
+
+    }
 }
 
 
