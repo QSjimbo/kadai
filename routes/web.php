@@ -11,7 +11,10 @@
 |
 */
 
-use App\Http\Controllers\DrinkController;
+// 補完機能使ったら出てきた部分
+// use App\Http\Controllers\DrinkController;
+// use Illuminate\Routing\Route;　←こいつがあると「"Method Illuminate\Routing\Route::get does not exist."」というエラーが起こる
+// use Illuminate\Support\Facades\Route; ←に書き換えること↑が解決する。
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,3 +34,18 @@ Route::get("showAllRequest", "RequestFormController@showAllRequest");
 
 // 設問５
 Route::post("delete", "DrinksController@cookiedelete");
+
+// session
+// 課題１
+Route::get("session/save", "DrinksController@saveSession");
+
+// 課題２
+Route::get("session/show", "DrinksController@showSession");
+
+// 課題３
+Route::get("session/delete", "DrinksController@deleteSession");
+
+// 課題４
+Route::get("session/inputMessage", "SessionController@inputMessage");
+Route::post("session/setSession", "SessionController@setSession");
+

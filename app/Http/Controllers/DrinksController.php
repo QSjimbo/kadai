@@ -55,6 +55,24 @@ class DrinksController extends Controller
     ];
     return $drinks;
    }
+   public function saveSession(Request $request){
+    $data = [
+        "price" => 120,
+        "stock" => 20
+    ];
+    $request->session()->put("コーラ", $data);
+    }
+
+    public function showSession(Request $request){
+        echo "<pre>";
+        var_dump($request->session()->all());
+        echo "</pre>";
+
+    }
+    public function deleteSession(Request $request){
+        $request -> session()->forget("コーラ");
+        echo "削除しました。";
+    }
 }
 
 
