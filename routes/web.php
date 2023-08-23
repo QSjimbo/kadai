@@ -49,3 +49,32 @@ Route::get("session/delete", "DrinksController@deleteSession");
 Route::get("session/inputMessage", "SessionController@inputMessage");
 Route::post("session/setSession", "SessionController@setSession");
 
+
+// Model
+// 課題１
+Route::get("drinks/create", "DrinksController@create");
+
+
+
+
+// 課題２
+
+
+
+
+// 課題３
+
+
+
+
+// 課題４
+
+
+
+
+// 課題５
+
+
+
+
+// 課題６

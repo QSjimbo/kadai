@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use illuminate\Http\Request;
+use App\Maker;
 
 class DrinksController extends Controller
 {
@@ -73,6 +74,41 @@ class DrinksController extends Controller
         $request -> session()->forget("コーラ");
         echo "削除しました。";
     }
+
+    public function create(){
+        $makers = Maker::all();
+        // foreach ($makers as $maker) {
+        //     echo $maker->name;
+        // }
+        return view("drinks.create", ["makers" => $makers]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
