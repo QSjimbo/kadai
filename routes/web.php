@@ -44,3 +44,8 @@ Route::get("session/show", "DrinksController@showSession");
 
 // 課題３
 Route::get("session/delete", "DrinksController@deleteSession");
+
+// 課題４
+Route::get("session/inputMessage", "SessionController@inputMessage");
+Route::post("session/setSession", "SessionController@setSession");
+
