@@ -29,3 +29,5 @@ Route::get("showRequest", "RequestFormContropler@getRequest");
 // 設問４
 Route::get("showAllRequest", "RequestFormController@showAllRequest");
 
+// 設問５
+Route::post("delete", "DrinksController@cookiedelete");

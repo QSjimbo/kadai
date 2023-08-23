@@ -5,6 +5,13 @@
     <meta charset="utf8" />
 </head>
 <body>
+    <div>
+        <?php echo $accessCount. "回目の訪問です"?>
+    </div>
+    <form action="delete" method="POST">
+        @csrf
+        <input type="submit" name="send" value="cookieを削除">
+    </form>
     <h1>飲み物一覧</h1>
     <table>
         <thead>
