@@ -31,3 +31,6 @@ Route::get("showAllRequest", "RequestFormController@showAllRequest");
 
 // 設問５
 Route::post("delete", "DrinksController@cookiedelete");
+
+// 課題１
+Route::get("session/save", "DrinksController@saveSession");
