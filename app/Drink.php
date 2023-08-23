@@ -11,7 +11,7 @@ class Drink extends Model
         "stock",
         "maker_id"
     ];
-    public function drink(){
+    public function maker(){
         return $this -> belongsTo("App\Maker");
     }
 }
