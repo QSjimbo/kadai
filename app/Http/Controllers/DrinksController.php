@@ -24,6 +24,19 @@ class DrinksController extends Controller
                 $query->where("price", ">=", 150);
             }
         }
+        if (!empty($data["stock"])) {
+            if ($data["stock"] === "2") {
+                $query->where("stock", "<=", 30);
+            } else if ($data["stock"] === "3") {
+                $query->where("stock", ">=", 31);
+                $query->where("stock", "<=", 50);
+            } else if ($data["stock"] === "4") {
+                $query->where("stock", ">=", 51);
+                $query->where("stock", "<=", 100);
+            } else if ($data["stock"] === "5") {
+                $query->where("stock", ">=", 101);
+            }
+        }
         $drinks = $query->get();
         return view("drinks.index", [
             "drinks" => $drinks
