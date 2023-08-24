@@ -37,11 +37,20 @@ class DrinksController extends Controller
                 $query->where("stock", ">=", 101);
             }
         }
+        if (!empty($data["maker_id"]) && $data["maker_id"] !== "指定なし") {
+            $query->where("maker_id", $data["maker_id"]);
+        }
+
+
+
         $drinks = $query->get();
         return view("drinks.index", [
             "drinks" => $drinks
         ]);
     }
+
+
+
     public function edit($id)
     {
         $drink = Drink::find($id);

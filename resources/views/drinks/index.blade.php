@@ -61,7 +61,19 @@
             </select>
         </div>
         <div>
+        <label for="maker">メーカー</label>
+        <select name="maker_id" id="maker">
+            <option value="指定なし" selected>指定なし</option>
+            <!-- メーカー情報をもとに登録されているメーカーをすべて<option>に追加 -->
+                <?php  foreach ($drinks as $drink):?>
+        <!-- 以下記述だとドリンクに対してのメーカーを取っているのでドリンクの種類分foreachが回ってしまう -->
+                    <option value="<?php echo $drink->maker->id; ?>"><?php echo $drink->maker->name; ?></option>
+                <?php endforeach?>
+        </select>
+        </div>
+        <div>
             <input type="submit" value="検索">
+            <input type="submit" value="全件表示">
         </div>
     </form>
 </body>
