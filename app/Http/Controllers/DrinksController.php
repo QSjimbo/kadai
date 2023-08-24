@@ -14,6 +14,16 @@ class DrinksController extends Controller
         if (!empty($data["name"])) {
             $query->where("name", $data["name"]);
         }
+        if (!empty($data["price"])) {// 送られて来るpriceの値は文字列なので注意
+            if ($data["price"] === "2") {
+                $query->where("price", "<", 100);
+            } else if ($data["price"] === "3") {
+                $query->where("price", ">=", 100);
+                $query->where("price", "<", 150);
+            } else if ($data["price"] === "4") {
+                $query->where("price", ">=", 150);
+            }
+        }
         $drinks = $query->get();
         return view("drinks.index", [
             "drinks" => $drinks
