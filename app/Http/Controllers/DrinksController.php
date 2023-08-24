@@ -6,9 +6,15 @@ use App\Drink;
 
 class DrinksController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $drinks = Drink::all();
+        // $drinks = Drink::all();//クエリビルダでは不要
+        $query = Drink::query();
+        $data = $request -> all();
+        if (!empty($data["name"])) {
+            $query->where("name", $data["name"]);
+        }
+        $drinks = $query->get();
         return view("drinks.index", [
             "drinks" => $drinks
         ]);
