@@ -6,13 +6,51 @@ use App\Drink;
 
 class DrinksController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $drinks = Drink::all();
+        // $drinks = Drink::all();//クエリビルダでは不要
+        $query = Drink::query();
+        $data = $request -> all();
+        if (!empty($data["name"])) {
+            $query->where("name", $data["name"]);
+        }
+        if (!empty($data["price"])) {// 送られて来るpriceの値は文字列なので注意
+            if ($data["price"] === "2") {
+                $query->where("price", "<", 100);
+            } else if ($data["price"] === "3") {
+                $query->where("price", ">=", 100);
+                $query->where("price", "<", 150);
+            } else if ($data["price"] === "4") {
+                $query->where("price", ">=", 150);
+            }
+        }
+        if (!empty($data["stock"])) {
+            if ($data["stock"] === "2") {
+                $query->where("stock", "<=", 30);
+            } else if ($data["stock"] === "3") {
+                $query->where("stock", ">=", 31);
+                $query->where("stock", "<=", 50);
+            } else if ($data["stock"] === "4") {
+                $query->where("stock", ">=", 51);
+                $query->where("stock", "<=", 100);
+            } else if ($data["stock"] === "5") {
+                $query->where("stock", ">=", 101);
+            }
+        }
+        if (!empty($data["maker_id"]) && $data["maker_id"] !== "指定なし") {
+            $query->where("maker_id", $data["maker_id"]);
+        }
+
+
+
+        $drinks = $query->get();
         return view("drinks.index", [
             "drinks" => $drinks
         ]);
     }
+
+
+
     public function edit($id)
     {
         $drink = Drink::find($id);
